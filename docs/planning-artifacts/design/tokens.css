@@ -1,0 +1,319 @@
+/* ============================================================================
+   TimeKeeper — Design Tokens (consumable layer)  ·  "Ledger & Dial"
+   ----------------------------------------------------------------------------
+   Generated from tokens.json (W3C DTCG source of truth). This file is the ONLY
+   place raw values are bound to names. Every component styles itself exclusively
+   through these custom properties — e.g. `color: var(--color-text-primary)`.
+
+   GOVERNANCE (non-negotiable for this product):
+   • Token system only. No raw hex / px / ms in component CSS — reference a token.
+   • NO inline CSS. The `style="..."` attribute and inline style objects are
+     forbidden in markup/components; styling happens in stylesheets via these vars.
+   • Need a value that has no token? Add a token here first, then use it.
+   Enforced by lint (see ux-design-specification.md §Governance).
+
+   Fonts are loaded by the app shell via <link>/@font-face (Fraunces, IBM Plex
+   Sans, IBM Plex Mono — all SIL OFL); families are referenced only via tokens.
+   ============================================================================ */
+
+:root {
+  /* ---- PRIMITIVES :: color · neutral (warm) -------------------------------- */
+  --p-neutral-0:   #ffffff;
+  --p-neutral-50:  #f8f5ef;
+  --p-neutral-100: #efeae0;
+  --p-neutral-200: #e0d8c9;
+  --p-neutral-300: #c8bda9;
+  --p-neutral-400: #a89c85;
+  --p-neutral-500: #877c67;
+  --p-neutral-600: #6a6051;
+  --p-neutral-700: #4e463a;
+  --p-neutral-800: #332e26;
+  --p-neutral-900: #211d17;
+  --p-neutral-950: #14110d;
+
+  /* ---- PRIMITIVES :: color · brand (teal "luminous dial") ------------------ */
+  --p-brand-50:  #e6f3f2;
+  --p-brand-100: #c2e2e0;
+  --p-brand-200: #8fcac7;
+  --p-brand-300: #57aeaa;
+  --p-brand-400: #2a938f;
+  --p-brand-500: #0e7c7b;
+  --p-brand-600: #0a6463;
+  --p-brand-700: #084e4d;
+  --p-brand-800: #063a39;
+  --p-brand-900: #042625;
+
+  /* ---- PRIMITIVES :: color · semantic ramps -------------------------------- */
+  --p-green-100: #dbede4; --p-green-500: #349468; --p-green-600: #2e7d5b; --p-green-700: #235f45;
+  --p-amber-100: #f8eccf; --p-amber-500: #d99a1f; --p-amber-600: #c9821a; --p-amber-700: #9a6310;
+  --p-red-100:   #f7dad6; --p-red-500:   #d23f33; --p-red-600:   #c2362b; --p-red-700:   #97271e;
+
+  --p-overlay-scrim: #14110dcc;
+  --p-overlay-ink-08: #14110d14;
+  --p-overlay-ink-16: #14110d29;
+  --p-overlay-paper-08: #f8f5ef14;
+
+  /* ---- PRIMITIVES :: typography -------------------------------------------- */
+  --p-font-display: "Fraunces", Georgia, serif;
+  --p-font-sans:    "IBM Plex Sans", system-ui, sans-serif;
+  --p-font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --p-weight-regular: 400;
+  --p-weight-medium: 500;
+  --p-weight-semibold: 600;
+  --p-weight-bold: 700;
+  --p-weight-black: 900;
+
+  --p-size-2xs: 0.6875rem;
+  --p-size-xs:  0.75rem;
+  --p-size-sm:  0.8125rem;
+  --p-size-md:  0.9375rem;
+  --p-size-lg:  1.0625rem;
+  --p-size-xl:  1.375rem;
+  --p-size-2xl: 1.75rem;
+  --p-size-3xl: 2.25rem;
+  --p-size-4xl: 3rem;
+  --p-size-5xl: 4rem;
+
+  --p-leading-tight: 1.1;
+  --p-leading-snug: 1.25;
+  --p-leading-normal: 1.5;
+  --p-leading-relaxed: 1.7;
+
+  --p-track-tighter: -0.02em;
+  --p-track-tight: -0.01em;
+  --p-track-normal: 0em;
+  --p-track-wide: 0.04em;
+  --p-track-caps: 0.08em;
+
+  /* ---- PRIMITIVES :: space / radius / border / size ------------------------ */
+  --p-space-0: 0rem;  --p-space-1: 0.25rem; --p-space-2: 0.5rem; --p-space-3: 0.75rem;
+  --p-space-4: 1rem;  --p-space-5: 1.5rem;  --p-space-6: 2rem;   --p-space-7: 2.5rem;
+  --p-space-8: 3rem;  --p-space-9: 4rem;    --p-space-10: 6rem;
+
+  --p-radius-none: 0rem; --p-radius-sm: 0.1875rem; --p-radius-md: 0.375rem;
+  --p-radius-lg: 0.625rem; --p-radius-xl: 1rem; --p-radius-full: 9999px;
+
+  --p-border-hairline: 1px; --p-border-thin: 1.5px; --p-border-thick: 2px; --p-border-rule: 3px;
+
+  --p-control-sm: 1.75rem; --p-control-md: 2.25rem; --p-control-lg: 2.75rem;
+  --p-tap-min: 2.75rem; --p-sidebar: 16rem; --p-container: 80rem;
+
+  /* ---- PRIMITIVES :: motion / z-index ------------------------------------- */
+  --p-dur-instant: 0ms; --p-dur-fast: 120ms; --p-dur-base: 220ms; --p-dur-slow: 420ms; --p-dur-pulse: 1600ms;
+  --p-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --p-ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --p-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --p-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --p-z-base: 0; --p-z-raised: 10; --p-z-sticky: 100; --p-z-overlay: 1000; --p-z-modal: 1100; --p-z-toast: 1200;
+
+  /* ========================================================================
+     SEMANTIC TOKENS — LIGHT (default). COMPONENTS USE ONLY THESE.
+     ======================================================================== */
+
+  /* surfaces */
+  --color-bg-canvas:         var(--p-neutral-50);
+  --color-bg-surface:        var(--p-neutral-0);
+  --color-bg-surface-raised: var(--p-neutral-0);
+  --color-bg-sunken:         var(--p-neutral-100);
+  --color-bg-inverse:        var(--p-neutral-950);
+  --color-bg-accent:         var(--p-brand-500);
+  --color-bg-accent-subtle:  var(--p-brand-50);
+
+  /* text */
+  --color-text-primary:   var(--p-neutral-900);
+  --color-text-secondary: var(--p-neutral-700);
+  --color-text-muted:     var(--p-neutral-500);
+  --color-text-inverse:   var(--p-neutral-50);
+  --color-text-on-accent: var(--p-neutral-0);
+  --color-text-link:      var(--p-brand-600);
+
+  /* borders */
+  --color-border-subtle:  var(--p-neutral-200);
+  --color-border-default: var(--p-neutral-300);
+  --color-border-strong:  var(--p-neutral-900);
+  --color-border-focus:   var(--p-brand-500);
+
+  /* accent */
+  --color-accent-default: var(--p-brand-500);
+  --color-accent-hover:   var(--p-brand-600);
+  --color-accent-active:  var(--p-brand-700);
+
+  /* status — running timer = the live dial; red is reserved for danger/over-budget */
+  --color-status-running:     var(--p-brand-500);
+  --color-status-success-fg:  var(--p-green-700);
+  --color-status-success-bg:  var(--p-green-100);
+  --color-status-warning-fg:  var(--p-amber-700);
+  --color-status-warning-bg:  var(--p-amber-100);
+  --color-status-danger-fg:   var(--p-red-700);
+  --color-status-danger-bg:   var(--p-red-100);
+  --color-status-danger-solid:var(--p-red-600);
+
+  /* overlays */
+  --color-overlay-scrim: var(--p-overlay-scrim);
+
+  /* typography roles (font + weight + size + leading + tracking) */
+  --type-display-font: var(--p-font-display); --type-display-weight: var(--p-weight-black);
+  --type-display-size: var(--p-size-5xl); --type-display-leading: var(--p-leading-tight); --type-display-track: var(--p-track-tighter);
+  --type-h1-font: var(--p-font-display); --type-h1-weight: var(--p-weight-bold);
+  --type-h1-size: var(--p-size-3xl); --type-h1-leading: var(--p-leading-tight); --type-h1-track: var(--p-track-tight);
+  --type-h2-font: var(--p-font-display); --type-h2-weight: var(--p-weight-semibold);
+  --type-h2-size: var(--p-size-2xl); --type-h2-leading: var(--p-leading-snug); --type-h2-track: var(--p-track-tight);
+  --type-h3-font: var(--p-font-sans); --type-h3-weight: var(--p-weight-semibold);
+  --type-h3-size: var(--p-size-xl); --type-h3-leading: var(--p-leading-snug); --type-h3-track: var(--p-track-normal);
+  --type-body-font: var(--p-font-sans); --type-body-weight: var(--p-weight-regular);
+  --type-body-size: var(--p-size-md); --type-body-leading: var(--p-leading-normal); --type-body-track: var(--p-track-normal);
+  --type-body-sm-size: var(--p-size-sm);
+  --type-label-font: var(--p-font-sans); --type-label-weight: var(--p-weight-medium); --type-label-size: var(--p-size-xs);
+  --type-overline-font: var(--p-font-sans); --type-overline-weight: var(--p-weight-semibold);
+  --type-overline-size: var(--p-size-2xs); --type-overline-track: var(--p-track-caps);
+  --type-timer-font: var(--p-font-mono); --type-timer-weight: var(--p-weight-medium);
+  --type-timer-size: var(--p-size-4xl); --type-timer-leading: var(--p-leading-tight); --type-timer-track: var(--p-track-tight);
+  --type-data-font: var(--p-font-mono); --type-data-weight: var(--p-weight-regular); --type-data-size: var(--p-size-sm);
+
+  /* spacing aliases (intent-named) */
+  --space-inset-sm: var(--p-space-2);
+  --space-inset-md: var(--p-space-4);
+  --space-inset-lg: var(--p-space-5);
+  --space-stack:    var(--p-space-4);
+  --space-gutter:   var(--p-space-5);
+  --space-section:  var(--p-space-8);
+
+  /* radii aliases */
+  --radius-control: var(--p-radius-md);
+  --radius-card:    var(--p-radius-lg);
+  --radius-pill:    var(--p-radius-full);
+
+  /* borders aliases */
+  --border-width-default: var(--p-border-hairline);
+  --border-width-emphasis: var(--p-border-thick);
+  --border-width-rule: var(--p-border-rule);
+
+  /* sizing aliases */
+  --size-control-sm: var(--p-control-sm);
+  --size-control-md: var(--p-control-md);
+  --size-control-lg: var(--p-control-lg);
+  --size-tap-min:    var(--p-tap-min);
+  --size-sidebar:    var(--p-sidebar);
+  --size-container:  var(--p-container);
+
+  /* elevation (light) */
+  --elevation-card:    0 2px 6px -1px var(--p-overlay-ink-16);
+  --elevation-popover: 0 8px 20px -4px var(--p-overlay-ink-16);
+  --elevation-modal:   0 18px 40px -8px var(--p-overlay-ink-16);
+  --elevation-dial-glow: 0 0 0 4px color-mix(in srgb, var(--p-brand-500) 28%, transparent);
+
+  /* motion aliases */
+  --motion-control:    var(--p-dur-fast) var(--p-ease-standard);
+  --motion-transition: var(--p-dur-base) var(--p-ease-standard);
+  --motion-enter:      var(--p-dur-slow) var(--p-ease-decelerate);
+  --motion-pulse-dur:  var(--p-dur-pulse);
+
+  /* focus ring */
+  --focus-ring-width:  var(--p-border-thick);
+  --focus-ring-offset: var(--p-space-1);
+  --focus-ring-color:  var(--p-brand-500);
+
+  /* z-index aliases */
+  --z-sticky: var(--p-z-sticky);
+  --z-overlay: var(--p-z-overlay);
+  --z-modal: var(--p-z-modal);
+  --z-toast: var(--p-z-toast);
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   SEMANTIC TOKENS — DARK. Override only what changes; primitives are shared.
+   Activate with <html data-theme="dark"> (explicit) — system pref handled below.
+   ========================================================================== */
+:root[data-theme="dark"] {
+  --color-bg-canvas:         var(--p-neutral-950);
+  --color-bg-surface:        var(--p-neutral-900);
+  --color-bg-surface-raised: var(--p-neutral-800);
+  --color-bg-sunken:         #0e0c09;
+  --color-bg-inverse:        var(--p-neutral-50);
+  --color-bg-accent:         var(--p-brand-400);
+  --color-bg-accent-subtle:  var(--p-brand-900);
+
+  --color-text-primary:   var(--p-neutral-50);
+  --color-text-secondary: var(--p-neutral-300);
+  --color-text-muted:     var(--p-neutral-400);
+  --color-text-inverse:   var(--p-neutral-900);
+  --color-text-on-accent: var(--p-neutral-950);
+  --color-text-link:      var(--p-brand-300);
+
+  --color-border-subtle:  var(--p-neutral-800);
+  --color-border-default: var(--p-neutral-700);
+  --color-border-strong:  var(--p-neutral-100);
+  --color-border-focus:   var(--p-brand-300);
+
+  --color-accent-default: var(--p-brand-400);
+  --color-accent-hover:   var(--p-brand-300);
+  --color-accent-active:  var(--p-brand-200);
+
+  --color-status-running:     var(--p-brand-300);
+  --color-status-success-fg:  #6dc79c;
+  --color-status-success-bg:  #102b20;
+  --color-status-warning-fg:  #e7b75a;
+  --color-status-warning-bg:  #2e2310;
+  --color-status-danger-fg:   #ec8a80;
+  --color-status-danger-bg:   #34130f;
+  --color-status-danger-solid:var(--p-red-500);
+
+  --elevation-card:    0 2px 6px -1px #00000066;
+  --elevation-popover: 0 8px 20px -4px #00000080;
+  --elevation-modal:   0 18px 40px -8px #00000099;
+
+  --focus-ring-color:  var(--p-brand-300);
+
+  color-scheme: dark;
+}
+
+/* System-preference dark when no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg-canvas:         var(--p-neutral-950);
+    --color-bg-surface:        var(--p-neutral-900);
+    --color-bg-surface-raised: var(--p-neutral-800);
+    --color-bg-sunken:         #0e0c09;
+    --color-bg-inverse:        var(--p-neutral-50);
+    --color-bg-accent:         var(--p-brand-400);
+    --color-bg-accent-subtle:  var(--p-brand-900);
+    --color-text-primary:   var(--p-neutral-50);
+    --color-text-secondary: var(--p-neutral-300);
+    --color-text-muted:     var(--p-neutral-400);
+    --color-text-inverse:   var(--p-neutral-900);
+    --color-text-on-accent: var(--p-neutral-950);
+    --color-text-link:      var(--p-brand-300);
+    --color-border-subtle:  var(--p-neutral-800);
+    --color-border-default: var(--p-neutral-700);
+    --color-border-strong:  var(--p-neutral-100);
+    --color-border-focus:   var(--p-brand-300);
+    --color-accent-default: var(--p-brand-400);
+    --color-accent-hover:   var(--p-brand-300);
+    --color-accent-active:  var(--p-brand-200);
+    --color-status-running: var(--p-brand-300);
+    --color-status-success-fg: #6dc79c; --color-status-success-bg: #102b20;
+    --color-status-warning-fg: #e7b75a; --color-status-warning-bg: #2e2310;
+    --color-status-danger-fg:  #ec8a80; --color-status-danger-bg:  #34130f;
+    --focus-ring-color: var(--p-brand-300);
+    color-scheme: dark;
+  }
+}
+
+/* The signature "live dial" pulse — referenced by the running-timer component
+   (.tk-timer--running { animation: tk-dial-pulse var(--motion-pulse-dur) ... }).
+   Defined here so motion is token-driven, not hand-rolled per component. */
+@keyframes tk-dial-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-status-running) 45%, transparent); }
+  50%      { box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-status-running) 0%, transparent); }
+}
+
+/* Respect reduced-motion globally: collapse token durations to instant. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --p-dur-fast: 0ms; --p-dur-base: 0ms; --p-dur-slow: 0ms; --p-dur-pulse: 0ms;
+  }
+}

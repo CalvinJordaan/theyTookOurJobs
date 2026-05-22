@@ -25,3 +25,7 @@ artifacts/
 .env
 .env.local
 *.local
+
+# BMAD tooling install (regenerate: npx bmad-method install --modules bmm --tools claude-code)
+_bmad/
+.claude/
