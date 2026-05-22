@@ -1,0 +1,19 @@
+{
+  "skill_name": "qa-test-cases",
+  "evals": [
+    {
+      "id": 1,
+      "name": "eval-full-suite",
+      "prompt": "Generate comprehensive QA test cases for the TimeKeeper project. The repo is at /tmp/theyTookOurJobs. Cover all 8 testing categories: Functional, API-REST, API-MCP, Database, UI/UX, Security, Permissions, and Edge Cases. Apply proper QA testing principles. Output a self-contained HTML report saved to /tmp/theyTookOurJobs/qa-test-report-2026-05-22.html",
+      "expected_output": "A self-contained HTML file with 30+ test cases across all 8 categories, each with TC-NNN numbering, title, preconditions, atomic steps with expected results, and overall expected result. The HTML must have working filter buttons, search, and stats header.",
+      "files": ["/tmp/theyTookOurJobs/docs/planning-artifacts/"]
+    },
+    {
+      "id": 2,
+      "name": "eval-api-testing",
+      "prompt": "I need test cases focused on API testing for TimeKeeper - both the REST endpoints and the MCP tools. The project is at /tmp/theyTookOurJobs. Include negative tests, auth testing, and error responses. Generate an HTML report at /tmp/theyTookOurJobs/qa-api-test-report-2026-05-22.html",
+      "expected_output": "HTML report with 15+ API test cases covering REST and MCP endpoints. Should include: valid payloads, missing fields, wrong auth, 404s, 403s. Each TC has numbered steps and expected HTTP status codes in expected results.",
+      "files": ["/tmp/theyTookOurJobs/docs/planning-artifacts/"]
+    }
+  ]
+}
