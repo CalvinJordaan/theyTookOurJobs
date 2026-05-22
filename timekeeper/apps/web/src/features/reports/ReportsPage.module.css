@@ -1,0 +1,172 @@
+.filters {
+  display: flex;
+  gap: var(--p-space-3);
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-stack);
+  padding: var(--space-inset-md);
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-card);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.filterField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-space-1);
+}
+
+.filterLabel {
+  font-size: var(--p-size-xs);
+  font-weight: var(--p-weight-medium);
+  color: var(--color-text-secondary);
+  font-family: var(--type-label-font);
+  text-transform: uppercase;
+  letter-spacing: var(--p-track-caps);
+}
+
+.input, .select {
+  height: var(--size-control-md);
+  padding: 0 var(--p-space-3);
+  border-radius: var(--radius-control);
+  border: var(--border-width-default) solid var(--color-border-default);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-family: var(--type-body-font);
+  font-size: var(--type-body-sm-size);
+}
+
+.input:focus, .select:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-color: var(--color-accent-default);
+}
+
+.summary {
+  display: flex;
+  gap: var(--space-inset-lg);
+  margin-bottom: var(--space-stack);
+  padding: var(--space-inset-md);
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-card);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summaryValue {
+  font-family: var(--type-data-font);
+  font-size: var(--p-size-2xl);
+  font-weight: var(--p-weight-medium);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.summaryLabel {
+  font-size: var(--p-size-xs);
+  color: var(--color-text-muted);
+  font-family: var(--type-label-font);
+  text-transform: uppercase;
+  letter-spacing: var(--p-track-caps);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.table th {
+  padding: var(--p-space-3) var(--p-space-4);
+  text-align: left;
+  background-color: var(--color-bg-sunken);
+  font-family: var(--type-label-font);
+  font-size: var(--p-size-xs);
+  font-weight: var(--p-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--p-track-caps);
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.table th:last-child, .table td:last-child {
+  text-align: right;
+}
+
+.table td {
+  padding: var(--p-space-2) var(--p-space-4);
+  font-size: var(--type-body-sm-size);
+  color: var(--color-text-primary);
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background-color: var(--color-bg-sunken);
+}
+
+.hours {
+  font-family: var(--type-data-font);
+  font-size: var(--type-data-size);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.totalRow td {
+  font-weight: var(--p-weight-semibold);
+  background-color: var(--color-bg-sunken);
+  border-top: var(--border-width-emphasis) solid var(--color-border-default);
+}
+
+.empty {
+  text-align: center;
+  padding: var(--space-section);
+  color: var(--color-text-muted);
+  font-size: var(--type-body-sm-size);
+}
+
+.exportBtn {
+  margin-left: auto;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: var(--space-stack);
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.tab {
+  padding: var(--p-space-2) var(--p-space-4);
+  font-size: var(--type-body-sm-size);
+  font-weight: var(--p-weight-medium);
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-bottom: var(--border-width-rule) solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: color var(--motion-control), border-color var(--motion-control);
+}
+
+.tab:hover { color: var(--color-text-primary); }
+
+.tab.active {
+  color: var(--color-accent-default);
+  border-bottom-color: var(--color-accent-default);
+}

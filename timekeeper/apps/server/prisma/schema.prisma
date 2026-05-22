@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AccessRole {
+  administrator
+  project_manager
+  member
+
+  @@map("access_role")
+}
+
+enum ApprovalStatus {
+  unsubmitted
+  submitted
+  approved
+  rejected
+
+  @@map("approval_status")
+}
+
+model User {
+  id             Int        @id @default(autoincrement())
+  firstName      String     @map("first_name") @db.VarChar(100)
+  lastName       String     @map("last_name") @db.VarChar(100)
+  email          String     @unique @db.VarChar(255)
+  isActive       Boolean    @default(true) @map("is_active")
+  weeklyCapacity Decimal    @default(40) @map("weekly_capacity") @db.Decimal(6, 2)
+  isContractor   Boolean    @default(false) @map("is_contractor")
+  accessRole     AccessRole @default(member) @map("access_role")
+  createdAt      DateTime   @default(now()) @map("created_at")
+  updatedAt      DateTime   @updatedAt @map("updated_at")
+
+  timeEntries     TimeEntry[]
+  userAssignments UserAssignment[]
+
+  @@map("users")
+}
+
+model Client {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  projects Project[]
+
+  @@map("clients")
+}
+
+model Project {
+  id                               Int      @id @default(autoincrement())
+  clientId                         Int      @map("client_id")
+  name                             String   @db.VarChar(255)
+  code                             String?  @db.VarChar(50)
+  isActive                         Boolean  @default(true) @map("is_active")
+  isBillable                       Boolean  @default(true) @map("is_billable")
+  budget                           Decimal? @db.Decimal(10, 2)
+  budgetIsMonthly                  Boolean  @default(false) @map("budget_is_monthly")
+  overBudgetNotificationPercentage Int      @default(80) @map("over_budget_notification_percentage")
+  showBudgetToAll                  Boolean  @default(false) @map("show_budget_to_all")
+  startsOn                         DateTime? @map("starts_on") @db.Date
+  endsOn                           DateTime? @map("ends_on") @db.Date
+  createdAt                        DateTime @default(now()) @map("created_at")
+  updatedAt                        DateTime @updatedAt @map("updated_at")
+
+  client          Client           @relation(fields: [clientId], references: [id])
+  timeEntries     TimeEntry[]
+  taskAssignments TaskAssignment[]
+  userAssignments UserAssignment[]
+
+  @@index([clientId], name: "idx_projects_client_id")
+  @@map("projects")
+}
+
+model Task {
+  id                Int      @id @default(autoincrement())
+  name              String   @db.VarChar(255)
+  isActive          Boolean  @default(true) @map("is_active")
+  billableByDefault Boolean  @default(true) @map("billable_by_default")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  taskAssignments TaskAssignment[]
+  timeEntries     TimeEntry[]
+
+  @@map("tasks")
+}
+
+model TaskAssignment {
+  id        Int      @id @default(autoincrement())
+  projectId Int      @map("project_id")
+  taskId    Int      @map("task_id")
+  isActive  Boolean  @default(true) @map("is_active")
+  billable  Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  project Project @relation(fields: [projectId], references: [id])
+  task    Task    @relation(fields: [taskId], references: [id])
+
+  @@unique([projectId, taskId])
+  @@index([projectId], name: "idx_task_assignments_project_id")
+  @@map("task_assignments")
+}
+
+model UserAssignment {
+  id              Int      @id @default(autoincrement())
+  projectId       Int      @map("project_id")
+  userId          Int      @map("user_id")
+  isActive        Boolean  @default(true) @map("is_active")
+  isProjectManager Boolean  @default(false) @map("is_project_manager")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  project Project @relation(fields: [projectId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@unique([projectId, userId])
+  @@index([userId], name: "idx_user_assignments_user_id")
+  @@map("user_assignments")
+}
+
+model TimeEntry {
+  id               BigInt         @id @default(autoincrement())
+  userId           Int            @map("user_id")
+  projectId        Int            @map("project_id")
+  taskId           Int            @map("task_id")
+  spentDate        DateTime       @map("spent_date") @db.Date
+  hours            Decimal        @db.Decimal(6, 2)
+  notes            String?        @db.Text
+  billable         Boolean        @default(true)
+  approvalStatus   ApprovalStatus @default(unsubmitted) @map("approval_status")
+  isRunning        Boolean        @default(false) @map("is_running")
+  timerStartedAt   DateTime?      @map("timer_started_at") @db.Timestamptz
+  createdAt        DateTime       @default(now()) @map("created_at")
+  updatedAt        DateTime       @updatedAt @map("updated_at")
+
+  user    User    @relation(fields: [userId], references: [id])
+  project Project @relation(fields: [projectId], references: [id])
+  task    Task    @relation(fields: [taskId], references: [id])
+
+  @@index([userId, spentDate], name: "idx_time_entries_user_date")
+  @@index([projectId, spentDate], name: "idx_time_entries_project_date")
+  @@map("time_entries")
+}

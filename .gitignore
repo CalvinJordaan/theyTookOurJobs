@@ -29,3 +29,4 @@ artifacts/
 # BMAD tooling install (regenerate: npx bmad-method install --modules bmm --tools claude-code)
 _bmad/
 .claude/
+/.vs

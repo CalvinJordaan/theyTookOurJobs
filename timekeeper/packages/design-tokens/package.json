@@ -1,0 +1,15 @@
+{
+  "name": "@timekeeper/design-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/tokens.css",
+  "exports": {
+    ".": "./dist/tokens.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./tokens.json"
+  },
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "files": ["dist", "tokens.json"]
+}

@@ -1,0 +1,119 @@
+.instrument {
+  background-color: var(--color-bg-surface);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-inset-lg);
+  box-shadow: var(--elevation-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-stack);
+  margin-bottom: var(--space-gutter);
+}
+
+.running {
+  border-color: var(--color-status-running);
+  box-shadow: var(--elevation-dial-glow);
+}
+
+.readout {
+  display: flex;
+  align-items: baseline;
+  gap: var(--p-space-3);
+}
+
+.elapsed {
+  font-family: var(--type-timer-font);
+  font-size: var(--type-timer-size);
+  font-weight: var(--type-timer-weight);
+  line-height: var(--type-timer-leading);
+  letter-spacing: var(--type-timer-track);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  min-width: 6ch;
+}
+
+.elapsed.active {
+  color: var(--color-status-running);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: var(--p-space-3);
+  align-items: end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-space-1);
+}
+
+.label {
+  font-size: var(--p-size-xs);
+  font-weight: var(--p-weight-medium);
+  color: var(--color-text-secondary);
+  font-family: var(--type-label-font);
+  letter-spacing: var(--p-track-wide);
+  text-transform: uppercase;
+}
+
+.select {
+  height: var(--size-control-md);
+  padding: 0 var(--p-space-3);
+  border-radius: var(--radius-control);
+  border: var(--border-width-default) solid var(--color-border-default);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-family: var(--type-body-font);
+  font-size: var(--type-body-sm-size);
+  width: 100%;
+  cursor: pointer;
+  transition: border-color var(--motion-control);
+}
+
+.select:hover {
+  border-color: var(--color-border-strong);
+}
+
+.select:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-color: var(--color-accent-default);
+}
+
+.notes {
+  grid-column: 1 / -1;
+}
+
+.notesInput {
+  width: 100%;
+  height: var(--size-control-md);
+  padding: 0 var(--p-space-3);
+  border-radius: var(--radius-control);
+  border: var(--border-width-default) solid var(--color-border-default);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-family: var(--type-body-font);
+  font-size: var(--type-body-sm-size);
+  transition: border-color var(--motion-control);
+}
+
+.notesInput:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-color: var(--color-accent-default);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-3);
+  flex-wrap: wrap;
+}
+
+.meta {
+  flex: 1;
+  font-size: var(--p-size-xs);
+  color: var(--color-text-muted);
+}

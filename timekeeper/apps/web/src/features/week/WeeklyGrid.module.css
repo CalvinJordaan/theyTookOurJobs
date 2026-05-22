@@ -1,0 +1,147 @@
+.wrapper {
+  overflow-x: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-stack);
+}
+
+.weekLabel {
+  font-size: var(--type-body-sm-size);
+  color: var(--color-text-secondary);
+  font-weight: var(--p-weight-medium);
+}
+
+.navBtns {
+  display: flex;
+  gap: var(--p-space-2);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 52rem;
+}
+
+.table th,
+.table td {
+  padding: var(--p-space-2) var(--p-space-3);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  text-align: right;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: var(--color-bg-sunken);
+  font-family: var(--type-label-font);
+  font-size: var(--p-size-xs);
+  font-weight: var(--p-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--p-track-caps);
+  white-space: nowrap;
+}
+
+.table th.projectCol {
+  text-align: left;
+  min-width: 14rem;
+}
+
+.projectCell {
+  text-align: left;
+}
+
+.projectName {
+  font-size: var(--type-body-sm-size);
+  font-weight: var(--p-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.taskName {
+  font-size: var(--p-size-xs);
+  color: var(--color-text-muted);
+}
+
+.cell {
+  position: relative;
+}
+
+.cellInput {
+  width: 100%;
+  min-width: 4.5rem;
+  height: var(--size-control-sm);
+  padding: 0 var(--p-space-2);
+  text-align: right;
+  border-radius: var(--radius-control);
+  border: var(--border-width-default) solid transparent;
+  background-color: transparent;
+  font-family: var(--type-data-font);
+  font-size: var(--type-data-size);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+  transition: border-color var(--motion-control), background-color var(--motion-control);
+}
+
+.cellInput:hover {
+  border-color: var(--color-border-default);
+  background-color: var(--color-bg-surface);
+}
+
+.cellInput:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-color: var(--color-accent-default);
+  background-color: var(--color-bg-surface);
+}
+
+.cellInput:disabled {
+  cursor: not-allowed;
+  color: var(--color-text-muted);
+}
+
+.cellInput.filled {
+  font-weight: var(--p-weight-medium);
+}
+
+.cellInput.warning {
+  color: var(--color-status-danger-fg);
+}
+
+.locked {
+  font-family: var(--type-data-font);
+  font-size: var(--type-data-size);
+  color: var(--color-text-muted);
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--p-space-1);
+}
+
+.rowTotal,
+.colTotal {
+  font-family: var(--type-data-font);
+  font-size: var(--type-data-size);
+  font-weight: var(--p-weight-semibold);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  background-color: var(--color-bg-sunken);
+}
+
+.today {
+  background-color: color-mix(in srgb, var(--color-accent-default) 6%, transparent);
+}
+
+.today .cellInput:not(:disabled) {
+  background-color: color-mix(in srgb, var(--color-accent-default) 8%, var(--color-bg-surface));
+}
+
+.dateSlice {
+  font-family: var(--type-data-font);
+  font-size: var(--p-size-xs);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: timekeeper
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: timekeeper/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build shared packages
+        run: pnpm --filter @timekeeper/shared build && pnpm --filter @timekeeper/design-tokens build
+
+      - name: Type-check
+        run: pnpm typecheck
+
+      - name: Lint — no inline CSS guard
+        run: |
+          echo "Checking for forbidden inline style= attributes..."
+          ! grep -rn 'style=' apps/web/src --include="*.tsx" --include="*.ts" | grep -v '// eslint-disable' | grep -v 'data-width' | grep -v "style={undefined}" || (echo "FAIL: inline style attributes found" && exit 1)
+          echo "Lint gate passed."
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build

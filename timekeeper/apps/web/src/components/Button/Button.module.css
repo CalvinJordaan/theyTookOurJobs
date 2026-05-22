@@ -1,0 +1,102 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--p-space-2);
+  height: var(--size-control-md);
+  padding: 0 var(--p-space-4);
+  border-radius: var(--radius-control);
+  font-family: var(--type-body-font);
+  font-size: var(--type-body-sm-size);
+  font-weight: var(--p-weight-medium);
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--motion-control), color var(--motion-control),
+              border-color var(--motion-control), box-shadow var(--motion-control);
+  border: var(--border-width-default) solid transparent;
+  text-decoration: none;
+  min-width: var(--size-tap-min);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Variants ── */
+
+.primary {
+  background-color: var(--color-accent-default);
+  color: var(--color-text-on-accent);
+  border-color: var(--color-accent-default);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+}
+
+.secondary {
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-bg-sunken);
+  border-color: var(--color-border-strong);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-bg-sunken);
+  color: var(--color-text-primary);
+}
+
+.danger {
+  background-color: var(--color-status-danger-bg);
+  color: var(--color-status-danger-fg);
+  border-color: var(--color-status-danger-fg);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--color-status-danger-solid);
+  color: var(--color-text-on-accent);
+  border-color: var(--color-status-danger-solid);
+}
+
+/* ── Running / dial state ── */
+.running {
+  background-color: var(--color-status-running);
+  color: var(--color-text-on-accent);
+  border-color: var(--color-status-running);
+  animation: tk-dial-pulse var(--motion-pulse-dur) ease-in-out infinite;
+}
+
+.running:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+}
+
+/* ── Sizes ── */
+.sm {
+  height: var(--size-control-sm);
+  padding: 0 var(--p-space-3);
+  font-size: var(--p-size-xs);
+}
+
+.lg {
+  height: var(--size-control-lg);
+  padding: 0 var(--p-space-5);
+  font-size: var(--type-body-size);
+}
